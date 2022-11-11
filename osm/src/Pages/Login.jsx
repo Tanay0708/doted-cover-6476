@@ -1,4 +1,7 @@
-import { Box, Button, Text, HStack, Input, Divider } from '@chakra-ui/react'
+import { Box, Button, Text, Flex,Center,Stack, Input, Divider } from '@chakra-ui/react'
+import { FcGoogle } from 'react-icons/fc';
+import { FaFacebook } from 'react-icons/fa';
+import { SiLinkedin, SiMessenger } from 'react-icons/si';
 import React from 'react'
 import { useContext, useState } from 'react'
 import { loginSuccess, loginUserFailure, loginUserLoading } from '../Context/AuthContext/action'
@@ -46,28 +49,55 @@ const Login = () => {
   return (
     <div>
       
-        <HStack>
-        <Box border={"1px solid blue"} h="600px" w={"50%"} marginTop="65px">
+        <Flex bg={"#F7F8F9"}>
+        <Box border={"1px solid blue"} h="600px" w={"50%"} marginTop="65px" bg="#EBEEEF" >
     <Text>dfdfd </Text>
         </Box>
-        <Box border={"1px solid red"} w={"50%"} h="600px" marginTop="5px" p={"absolute"} top="100%"  >
-        <form onSubmit={handleSubmit} >
-        <Button colorScheme='grey'border="1px solid black" marginTop="200px" w="70%" marginLeft={"15%"} color="black" >Button</Button>
-        <br />
-        <Button colorScheme='grey'border="1px solid black" marginTop="5px"w="70%" marginLeft={"15%"} color="black" >Button</Button>
-        <br />
-        <Button colorScheme='grey'border="1px solid black" marginTop="5px"w="70%" marginLeft={"15%"} color="black" >Button</Button>
-        <br/>
+        <Box border={"1px solid red"} w={"50%"} h="600px" marginTop="65px" p={"absolute"} top="100%" bg="#002F34"  >
+        <form onSubmit={handleSubmit}  >
+        <Center p={8}>
+      <Stack spacing={2} align={'center'} maxW={'md'} w={'full'} mt="50px">
+        {/* Facebook */}
+        <Button w={'full'} colorScheme={'facebook'} leftIcon={<FaFacebook />}>
+          <Center>
+            <Text>Continue with Facebook</Text>
+          </Center>
+        </Button>
+
+        {/* Google */}
+        <Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />}  >
+          <Center>
+            <Text color={"white"} >Sign in with Google</Text>
+          </Center>
+        </Button>
+
+        {/* LinkedIn */}
+        <Button w={'full'} colorScheme={'messenger'} leftIcon={<SiLinkedin />}>
+          <Center>
+            <Text>Send to Linkedin</Text>
+          </Center>
+        </Button>
+
+        {/* Messenger */}
+        <Button w={'full'} colorScheme={'messenger'} leftIcon={<SiMessenger />}>
+          <Center>
+            <Text>Send to Messenger</Text>
+          </Center>
+        </Button>
         <Divider orientation='horizontal' marginTop="10px" w={"70%"}  marginLeft="15%" />
           
-        <Input type="text" placeholder='Enter your Email' onChange={handleEmail} w="70%" marginLeft={"15%"} marginTop="10px"  />
-        <Input type="password" placeholder='Enter your password' onChange={handlePassword} w="70%" marginLeft={"15%"} marginTop="5px" />
-        <br />
-        <Button margin={"auto"} onClick={handleSubmit} w="30%" marginLeft={"35%"} marginTop="5px" >Login</Button>
+          <Input bg="white" type="text" placeholder='Enter your Email' onChange={handleEmail} w="full" marginLeft={"15%"} marginTop="10px"  />
+          <Input bg="white" type="password" placeholder='Enter your password' onChange={handlePassword} w="full" marginLeft={"15%"} marginTop="5px" />
+          <br />
+          <Button margin={"auto"} onClick={handleSubmit} w="full" marginLeft={"35%"} marginTop="5px" >Login</Button>
+      </Stack>
+    </Center>
+        <br/>
+       
         </form>
     
       </Box>
-      </HStack>
+      </Flex>
       
 
      
