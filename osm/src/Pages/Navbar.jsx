@@ -55,6 +55,7 @@ const Navbar = () => {
                 <Text>Login</Text>
                 </Link>
                 <Link to={"/pro"} >Pro</Link>
+                <Link to={"/dash"} >sell</Link>
             </HStack>
         </Box>
        

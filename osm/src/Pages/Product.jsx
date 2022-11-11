@@ -1,11 +1,15 @@
-import { Box,Image,Text, Flex } from '@chakra-ui/react'
+import { Box,Image,Text, Flex, Avatar, Button } from '@chakra-ui/react';
+import { Collapse, } from '@chakra-ui/react';
 import React from 'react'
 
 const Product = () => {
+
+    const [show, setShow] = React.useState(false)
+    const handleToggle = () => setShow(!show)
   return (
 
-    <Flex w={"80%"} margin="auto" gap={"1.5%"} >
-        <Box h={"auto"} border={"1px solid black"} mt="65px" w={"65%"} >
+    <Flex w={"90%"} margin="auto" gap={"1.5%"} >
+        <Box h={"auto"}  mt="65px" w={"65%"} >
             <Box bg={"black"}>
             <Image w={"70%"} m="auto" h="100%" src="https://apollo-singapore.akamaized.net/v1/files/odsosvjun4qw2-IN/image;s=780x0;q=60" />
             </Box>
@@ -24,28 +28,39 @@ KM driven
                 <Text fontSize={"1.5em"} fontWeight="bold">
                     Description
                 </Text>
-                <Text>
-                Note : Name transfer is mandatory
+                <Collapse startingHeight={20} in={show}>
+                Direct Sale from Factory
 
-1. First owner .
+All types of extension Boards Available.
 
-2. 2021 March cash purchased.
-
-3. 5 years insurance updated till 2026 and pollution updated till 2023
-
-4. No pending cases.
-
-5. Dual key available.
-
-6. LED headlamp , stand censor , BS6 Varient , ABS model ,
-
-Price is slightly negotiable. Thank you.
-                </Text>
+Bulk Order Accepted And Delivery All Over India With Shipping Charges Applicable.
+      </Collapse>
+      <Button size='sm' onClick={handleToggle} mt='1rem'>
+        Show {show ? 'Less' : 'More'}
+      </Button>
             </Box>
         </Box>
-        <Box h={"500px"} border={"1px solid black"} mt="65px" w={"30%"} >
-            <Box w={"full"}>
-                
+        <Box h={"auto"} mt="65px" w={"30%"} >
+            <Box w={"full"} p="20px" borderRadius="4px" border="1px solid black" >
+                <Text fontSize={"2em"}  fontWeight="bold" >₹35,000</Text>
+                <Text color="grey" fontSize="1em" >Extension Board Wholesale</Text>
+                <br />
+                <Text fontSize="sm" color="grey" >Samudrapur, Maharashtra, India</Text>
+            </Box>
+            <Box w="full" border="1px solid black"borderRadius="4px" mt="20px"padding={"20px"} >
+                <Text fontSize="1.2em"  >Seller Description</Text>
+                <Flex alignItems={"center"} gap="10" mt={"5px"}  >
+                    <Avatar size="lg"  name='tanay' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU' />
+                    <Text fontSize="1.1em" >Seller name</Text>
+                  
+                </Flex>
+                <Button bg="white" border="2px solid black" h={"3.3em"} borderRadius="4px"  mt="5px" w={"100%"} fontWeight="bold"> Chat with seller </Button>
+                <Text> Phone no. 123456789</Text>
+            </Box>
+            <Box w={"full"} border="1px solid black" p="20px" mt="10px" >
+                <Text fontSize="1.2em" fontWeight="bold" >Posted in</Text>
+                <Text fontSize="0.8em"mt={"5px"}>Samudrapur, Maharashtra, India</Text>
+                <Image mt="10px" src='https://maps.googleapis.com/maps/api/staticmap?center=20.638%2C78.964&language=en-IN&size=640x256&zoom=15&scale=1&lang=en-IN&channel=olx-latam-ar-web-dev&key=AIzaSyAChxbDof4fywIkC6U-7MCgXBpUp4t2DiA&signature=w6zKEQU7w769Dauxuzjx5mXHjyk=' />
             </Box>
         </Box>
     </Flex>
