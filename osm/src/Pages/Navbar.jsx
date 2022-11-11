@@ -54,7 +54,7 @@ const Navbar = () => {
                  
                 <Text>Login</Text>
                 </Link>
-                
+                <Link to={"/pro"} >Pro</Link>
             </HStack>
         </Box>
        
