@@ -6,6 +6,7 @@ import Login from './Login'
 import Product from './Product'
 import Sellers from './Sellers';
 import Form from '../Components/Form'
+import PrivateRoutes from './PrivateRoutes'
 
 const AllRoutes = () => {
   return (
@@ -14,9 +15,10 @@ const AllRoutes = () => {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />}/>
             <Route path='/pro' element={<Product />} />
-            <Route path='/sell' element={<Sellers />} />
-            <Route path='/dash' element={<Dashboard />} />
-            <Route path='/new' element={<Form />} />
+            <Route path='/sell' element={<PrivateRoutes><Sellers /> </PrivateRoutes>} />
+            <Route path='/dash' element={ <PrivateRoutes><Dashboard /></PrivateRoutes>} />
+            <Route path='/new' element={<PrivateRoutes> <Form /> </PrivateRoutes>} />
+            <Route path='/res/:id' element={ <PrivateRoutes><Product /></PrivateRoutes>}  />
         </Routes>
     </div>
   )

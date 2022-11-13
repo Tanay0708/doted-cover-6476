@@ -10,7 +10,7 @@ import {
     Stack,
 
     
-    Badge,
+ 
     useColorModeValue,
   } from '@chakra-ui/react';
 const SideBar = () => {
@@ -18,7 +18,7 @@ const SideBar = () => {
  <div>
         
         {/* <Flex w="full" h="100vh" bg="gray.100" padding={10} gap={5} > */}
-    <Flex bg={"white"} w={"full"}  justifyContent={"space-between"} maxW={350} h="full" as='aside' alignItems={"center"} padding={6} mt="15px" flexDirection="column" borderRadius={"3xl"} >
+    <Flex bg={"white"} w={"full"}  justifyContent={"space-between"} maxW={350} h="full" as='aside' alignItems={"center"} p={6} mt="15px" flexDirection="column" borderRadius={"3xl"} >
     <Center py={6}>
       <Box
         maxW={'300px'}
@@ -31,7 +31,7 @@ const SideBar = () => {
         <Avatar
           size={'xl'}
           src={
-            'https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU'
           }
           alt={'Avatar Alt'}
           mb={4}
@@ -49,45 +49,20 @@ const SideBar = () => {
           }}
         />
         <Heading fontSize={'2xl'} fontFamily={'body'}>
-          Lindsey James
+          Sellers
         </Heading>
         <Text fontWeight={600} color={'gray.500'} mb={4}>
-          @lindsey_jam3s
+          @Seller
         </Text>
         <Text
           textAlign={'center'}
           color={useColorModeValue('gray.700', 'gray.400')}
           px={3}>
-          Actress, musician, songwriter and artist. PM for work inquires or{' '}
-          <Link href={'#'} color={'blue.400'}>
-            #tag
-          </Link>{' '}
-          me in your posts
+          Seller since 2019
+          
         </Text>
 
-        <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-          <Badge
-            px={2}
-            py={1}
-            bg={useColorModeValue('gray.50', 'gray.800')}
-            fontWeight={'400'}>
-            #art
-          </Badge>
-          <Badge
-            px={2}
-            py={1}
-            bg={useColorModeValue('gray.50', 'gray.800')}
-            fontWeight={'400'}>
-            #photography
-          </Badge>
-          <Badge
-            px={2}
-            py={1}
-            bg={useColorModeValue('gray.50', 'gray.800')}
-            fontWeight={'400'}>
-            #music
-          </Badge>
-        </Stack>
+        {/*  */}
 
         <Stack mt={8} direction={'row'} spacing={4}>
           <Button
@@ -119,7 +94,7 @@ const SideBar = () => {
         </Stack>
       </Box>
     </Center>
-      <Box  >
+      <Box >
         <Link to={"/dash"} ><Button w={"300px"} mt="5px"  >DashBoard</Button>  </Link>   
         <Link to={"/new"}> <Button w={"300px"} mt="5px"   >Add New Product</Button></Link>
         <Button w={"300px"} mt="5px"  >Message</Button>

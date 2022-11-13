@@ -2,11 +2,12 @@ import React, { useEffect } from 'react'
 import { useContext,useState } from 'react'
 import { AuthContext } from '../Context/AuthContext/AuthContex'
 import axios from "axios";
-import { Box, Divider, Flex, Grid, GridItem,Image,ListItem,Text } from '@chakra-ui/react';
+import { Box, Divider,Stack, Flex, Grid, GridItem,Image,ListItem,Text } from '@chakra-ui/react';
 import { List } from '@chakra-ui/react';
 import Pagination from '../Components/Pagination';
-
-
+import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
+import './Home.css'
 const getData = ({page = 1}) => {
   return axios.get(`https://osm-mock-server-modified.onrender.com/products?_page=${page}&_limit=10`);
 }
@@ -41,15 +42,45 @@ const Home = () => {
   if(loading) {
     return (
       <>
-      ..loading
+      <Stack position={'absolute'} top="10px">
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+</Stack>  
       </>
     )
   }
 
   return (
     <div>
+       <Flex w={'100%'} h='50px'm="auto" mt="15px" className='home-pro'  display='flex' alignItems={"center"} justifyContent="space-around" >
+          <Text fontWeight={'bold'} >ALL Categories</Text>
+          <Text fontSize={'0.8m'} >Cars</Text>
+          <Text fontSize={'0.8m'} >MotorCycle</Text>
+          <Text fontSize={'0.8m'} >Mobile Phones</Text>
+          <Text fontSize={'0.8m'} >For sale: Hoses & Apartments</Text>
+          <Text fontSize={'0.8m'} >OLX Renew(Mobile)</Text>
+          <Text fontSize={'0.8m'} >Scooters</Text>
+          <Text fontSize={'0.8m'} >Commercial and other vehicels</Text>
+          <Text fontSize={'0.8m'} >For Rent : House and Apartment</Text>
+      </Flex>
 
-    <Grid w="80%" margin="auto" border="1px solid red" gap={5}  templateColumns={{
+    <Flex w={"80%"} m='auto'  mt='50px' >
+      <Image src='https://next-js-olx-clone.vercel.app/images/banner.JPG' />
+    </Flex>
+    <Grid w="80%" margin="auto"  gap={2}   templateColumns={{
       base: "repeat(1,1fr)",
       md: "repeat(2,1fr)",
       lg: "repeat(4,1fr)"
@@ -57,7 +88,7 @@ const Home = () => {
       {
         data.map((item) => (
           <GridItem>
-            <Box h={"275px"} border="1px solid black" mt={"100px"} overflow={"hidden"} borderRadius={"5px"}>
+            <Box h={"280px"} className="home-pro" mt={"25px"}  overflow={"hidden"} borderRadius={"5px"}>
               <Box  >
                 <Image src={item.img} m="auto" h={{
                   sm: '10em',
@@ -68,11 +99,13 @@ const Home = () => {
               <Box marginTop={"5px"} padding="15px" borderLeft={"5px solid #FFCE32"}  >
               <Text fontSize="1.1em" fontWeight={"bold"}>
 
-              {item.price}
+              ₹{item.price}
               </Text>
-                <Text>
+              <Link to={`/res/${item.id}`}  >
+                <Text fontWeight={"bold"}>
                   {item.title}
                 </Text>
+                </Link>
                 <Text>
                   {item.address}
                 </Text>
@@ -86,10 +119,10 @@ const Home = () => {
 
     </Grid>
       <br />
-      <Box width="20%" border="1px solid black" m={"auto"} display="flex" justifyContent="center"  >
+      <Box width="20%"  m={"auto"} display="flex" justifyContent="center"  >
         <Pagination current={page} totalPage={totalPage} onChange= {page=> setPage(page)} />
       </Box>
-      <Flex w={"full"} border="1px solid red" pl={"10%"} pr="10%" gap={9} bg={"#F7F8F9"} mt="50px" >
+      <Flex w={"full"} pl={"10%"} pr="10%" gap={9} bg={"#F7F8F9"} mt="50px" >
         <Box>
           <Image  src='https://statics.olx.in/external/base/img/phone-app.webp' />
         </Box>
@@ -169,6 +202,15 @@ const Home = () => {
           <Text fontSize={"0.9em"} color="#002F34" fontWeight={"bold"} >FOLLOW US</Text>
         </Box>
         </Flex>
+      </Flex>
+      <Flex w={"full"} h="50px" bg={"#002F34"} justifyContent="space-between" color={"white"} alignItems="center" >
+      <Flex gap="50px">
+          <Text fontWeight={"bold"}>Other Countries</Text>
+        <Text>Pakistan - South Africa - Indonesia</Text>
+      </Flex>
+      <Flex>
+        <Text>All rights reserved</Text>
+      </Flex>
       </Flex>
     </div>
   )

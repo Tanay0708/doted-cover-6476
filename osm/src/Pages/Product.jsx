@@ -1,39 +1,46 @@
 import { Box,Image,Text, Flex, Avatar, Button } from '@chakra-ui/react';
 import { Collapse, } from '@chakra-ui/react';
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+
+const getRes = (id) => {
+    return axios.get(`https://osm-mock-server-modified.onrender.com/products/${id}`)
+    
+}
 
 const Product = () => {
-
+    const {id} = useParams();
     const [show, setShow] = React.useState(false)
     const handleToggle = () => setShow(!show)
+    const [data, setData] = useState({})
+
+    useEffect(() => {
+        getRes(id)
+        .then(res => {
+            setData(res.data)
+        })
+    },[id])
+    console.log(data)
   return (
 
     <Flex w={"90%"} margin="auto" gap={"1.5%"} >
         <Box h={"auto"}  mt="65px" w={"65%"} >
             <Box bg={"black"}>
-            <Image w={"70%"} m="auto" h="100%" src="https://apollo-singapore.akamaized.net/v1/files/odsosvjun4qw2-IN/image;s=780x0;q=60" />
+            <Image w={"70%"} m="auto" h="100%" src="https://apollo-singapore.akamaized.net/v1/files/rbzybzhx82sb-IN/image;s=780x0;q=60" />
             </Box>
             <Box border={"1px solid black"} w="100%" mt={"5px"} borderRadius={"5px"}  >
                 <Text fontSize={"1.5em"} fontWeight="bold">Details</Text>
-                Brand
-KTM 
-Model 
-Duke 200
-Year
-2021
-KM driven
-18,000 km
+                Samsung LG Whirlpool MarQ Panasonic Midea
             </Box>
             <Box border={"1px solid black"} w="100%" mt={"5px"} borderRadius="5px">
                 <Text fontSize={"1.5em"} fontWeight="bold">
                     Description
                 </Text>
                 <Collapse startingHeight={20} in={show}>
-                Direct Sale from Factory
-
-All types of extension Boards Available.
-
-Bulk Order Accepted And Delivery All Over India With Shipping Charges Applicable.
+                Fully automatic top load and front load washing machine starting from ₹9000 with brand warranty in Samsung & LG Other brand service provide by us
       </Collapse>
       <Button size='sm' onClick={handleToggle} mt='1rem'>
         Show {show ? 'Less' : 'More'}
@@ -42,8 +49,8 @@ Bulk Order Accepted And Delivery All Over India With Shipping Charges Applicable
         </Box>
         <Box h={"auto"} mt="65px" w={"30%"} >
             <Box w={"full"} p="20px" borderRadius="4px" border="1px solid black" >
-                <Text fontSize={"2em"}  fontWeight="bold" >₹35,000</Text>
-                <Text color="grey" fontSize="1em" >Extension Board Wholesale</Text>
+                <Text fontSize={"2em"}  fontWeight="bold" >₹ 9,999</Text>
+                <Text color="grey" fontSize="1em" >Lucky sales copration</Text>
                 <br />
                 <Text fontSize="sm" color="grey" >Samudrapur, Maharashtra, India</Text>
             </Box>
